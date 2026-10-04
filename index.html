@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0B1F3F">
+  <title>Randha Trianda Rahman | Portofolio</title>
+  <meta name="description" content="Portofolio Randha Trianda Rahman: lulusan S1 Sistem Informasi dengan pengalaman marketing, admin, dan analyst.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --bg: #FBF7FA;
+      --blush: #F7E3E8;
+      --lavender: #E8E2F4;
+      --sky: #DDEAF5;
+      --mint: #DFF1E8;
+      --ink: #2F2A3D;
+      --muted: #6B6479;
+      --gold: #B8913A;
+      --gold-soft: #D9B96A;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .wrap { width: min(100% - 2.5rem, 880px); margin-inline: auto; }
+
+    /* Navigasi */
+    nav {
+      position: sticky; top: 0; z-index: 40;
+      padding: .75rem 0; padding-top: calc(.75rem + env(safe-area-inset-top, 0px));
+      background: rgba(251, 247, 250, .92);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(217, 185, 106, .55);
+    }
+    nav .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; align-items: center; }
+    nav .brand { font-family: var(--serif); font-weight: 600; text-decoration: none; color: var(--gold); }
+    nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; font-size: .95rem; }
+    nav ul a { text-decoration: none; color: var(--muted); }
+    nav ul a:hover { color: var(--ink); }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--blush) 0%, var(--lavender) 55%, var(--sky) 100%);
+      padding: 4rem 0 4.5rem;
+      border-bottom: 2px solid var(--gold-soft);
+    }
+    .hero .wrap { display: grid; gap: 2rem; align-items: center; grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .avatar {
+      width: 180px; height: 180px; border-radius: 50%;
+      object-fit: cover; object-position: 50% 22%;
+      background: var(--bg);
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 0 8px rgba(217, 185, 106, .25);
+    }
+    @media (min-width: 760px) { .avatar { width: 220px; height: 220px; } }
+    h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.1rem, 7vw, 3.4rem); line-height: 1.15; }
+    .hero p { max-width: 34rem; margin-top: 1rem; color: var(--muted); font-size: 1.05rem; }
+    .btns { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-top: 1.75rem; }
+    .btn {
+      display: inline-block; padding: .75rem 1.5rem; border-radius: 999px;
+      text-decoration: none; font-weight: 600; font-size: .95rem;
+    }
+    .btn.gold { background: var(--gold); color: #fff; }
+    .btn.gold:hover { background: #9E7B2E; }
+    .btn.line { border: 2px solid var(--gold); color: var(--ink); background: rgba(255,255,255,.5); }
+    .btn.line:hover { background: #fff; }
+    @media (min-width: 760px) {
+      .hero .wrap { grid-template-columns: auto 1fr; justify-items: start; text-align: left; gap: 3rem; }
+      .btns { justify-content: flex-start; }
+    }
+
+    /* Bagian umum */
+    section { padding: 3.5rem 0 0; }
+    h2 {
+      font-family: var(--serif); font-weight: 600; font-size: 1.7rem; margin-bottom: 1.25rem;
+      padding-bottom: .5rem; border-bottom: 2px solid var(--gold-soft); display: inline-block;
+    }
+    p + p { margin-top: .9rem; }
+    .lead { max-width: 40rem; }
+
+    /* Pendidikan */
+    .edu { background: var(--sky); border-left: 5px solid var(--gold); border-radius: 12px; padding: 1.25rem 1.5rem; }
+    .edu h3 { font-family: var(--serif); font-size: 1.2rem; }
+    .edu span { color: var(--muted); font-size: .95rem; }
+
+    /* Pengalaman */
+    .exp { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+    .exp article { border-radius: 14px; padding: 1.25rem 1.4rem; }
+    .exp article:nth-child(1) { background: var(--blush); }
+    .exp article:nth-child(2) { background: var(--mint); }
+    .exp article:nth-child(3) { background: var(--lavender); }
+    .exp h3 { font-family: var(--serif); font-size: 1.15rem; margin-bottom: .4rem; }
+    .exp p { font-size: .95rem; color: var(--muted); }
+
+    /* Minat */
+    .interest { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .interest div {
+      background: #fff; border: 2px solid var(--gold-soft); border-radius: 14px; padding: 1.4rem;
+    }
+    .interest h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: .4rem; }
+    .interest p { color: var(--muted); font-size: .95rem; }
+
+    /* Kontak */
+    .contact { background: var(--lavender); border-radius: 16px; padding: 2rem 1.5rem; }
+    .contact ul { list-style: none; margin-top: 1rem; display: grid; gap: .4rem; }
+    .contact a { color: var(--ink); font-weight: 500; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+
+
+    /* Galeri */
+    [hidden] { display: none !important; }
+    .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.25rem 0 1.5rem; }
+    .chip {
+      font: inherit; font-size: .9rem; cursor: pointer;
+      padding: .45rem 1rem; border-radius: 999px;
+      border: 2px solid var(--gold-soft); background: #fff; color: var(--ink);
+    }
+    .chip:hover { background: var(--blush); }
+    .chip.on { background: var(--gold); border-color: var(--gold); color: #fff; }
+    .gallery { columns: 2; column-gap: .8rem; }
+    @media (min-width: 760px) { .gallery { columns: 3; column-gap: 1rem; } }
+    .gallery figure { break-inside: avoid; margin-bottom: .8rem; }
+    @media (min-width: 760px) { .gallery figure { margin-bottom: 1rem; } }
+    .thumb {
+      display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in;
+      background: var(--lavender); border-radius: 12px; overflow: hidden;
+      border-bottom: 3px solid var(--gold-soft);
+    }
+    .thumb img { display: block; width: 100%; height: auto; }
+    .gallery figcaption { font-size: .85rem; color: var(--muted); padding: .35rem .15rem 0; }
+    dialog#lightbox {
+      border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh;
+      width: 100%; height: 100%;
+    }
+    dialog#lightbox::backdrop { background: rgba(47, 42, 61, .88); }
+    .lb { width: 100%; height: 100%; display: grid; grid-template-rows: 1fr auto; place-items: center; gap: .75rem; padding: 3.5rem 1rem 1.25rem; }
+    .lb img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 10px; border: 3px solid var(--gold-soft); background: #fff; }
+    .lb p { color: #fff; font-size: .95rem; text-align: center; }
+    .lb-close {
+      position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; border-radius: 50%;
+      border: 2px solid var(--gold-soft); background: var(--bg); color: var(--ink);
+      font-size: 1.5rem; line-height: 1; cursor: pointer;
+    }
+
+    /* Layar pembuka */
+    body.intro-open { overflow: hidden; }
+    .intro {
+      position: fixed; inset: 0; z-index: 100;
+      display: grid; place-items: center; padding: 1.5rem; text-align: center;
+      background: linear-gradient(135deg, var(--blush) 0%, var(--lavender) 55%, var(--sky) 100%);
+      transition: opacity .6s ease, visibility .6s;
+    }
+    .intro.go { opacity: 0; visibility: hidden; pointer-events: none; }
+    .intro-box { display: grid; justify-items: center; gap: 1.1rem; max-width: 26rem; }
+    .intro-name { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 6vw, 2.3rem); line-height: 1.2; }
+    .intro-sub { color: var(--muted); }
+    .cam {
+      position: relative; cursor: pointer; margin: .75rem 0;
+      width: min(62vw, 210px); padding: 1.25rem 1.1rem;
+      color: var(--gold); background: rgba(255, 255, 255, .6);
+      border: 3px solid var(--gold); border-radius: 30px;
+      box-shadow: 0 0 0 8px rgba(217, 185, 106, .25);
+      transition: transform .5s ease;
+    }
+    .cam::after {
+      content: ""; position: absolute; inset: -3px; border-radius: inherit;
+      border: 3px solid var(--gold-soft); animation: ping 2.2s ease-out infinite;
+    }
+    @keyframes ping { from { transform: scale(1); opacity: .7; } to { transform: scale(1.3); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .cam::after { animation: none; } .intro, .cam { transition: none; } }
+    .intro.go .cam { transform: scale(1.15); }
+    .cam svg { display: block; width: 100%; height: auto; }
+    .cam-body { fill: #fff; stroke: var(--gold); stroke-width: 4; stroke-linejoin: round; }
+    .cam-lens { fill: var(--lavender); stroke: var(--gold); stroke-width: 4; }
+    .cam-glass { fill: var(--gold-soft); }
+    .cam-shine { fill: #fff; opacity: .65; }
+    .cam-dot { fill: var(--gold); }
+    .intro-cta { font-weight: 600; }
+    .intro-note { font-size: .85rem; color: var(--muted); }
+
+    /* Musik latar */
+    .music-wrap {
+      position: fixed; right: 1rem; z-index: 50;
+      bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+      display: flex; align-items: center; gap: .6rem; max-width: calc(100% - 2rem);
+    }
+    .music-hint {
+      background: #fff; color: var(--ink); font-size: .85rem; line-height: 1.35;
+      padding: .5rem .85rem; border-radius: 999px; border: 2px solid var(--gold-soft);
+    }
+    .music {
+      flex: none; width: 52px; height: 52px; border-radius: 50%; cursor: pointer;
+      display: grid; place-items: center;
+      background: var(--bg); color: var(--gold); border: 3px solid var(--gold);
+      box-shadow: 0 0 0 5px rgba(217, 185, 106, .25);
+    }
+    .music.on { background: var(--gold); color: #fff; }
+    .music svg { width: 22px; height: 22px; fill: currentColor; }
+    .yt-off { position: fixed; left: -9999px; top: 0; width: 200px; height: 200px; }
+
+    footer { padding: 3rem 0 2.5rem; text-align: center; color: var(--muted); font-size: .9rem; }
+    /* Penyempurnaan layout */
+    :root { --line: rgba(184, 145, 58, .28); --radius: 16px; }
+    body { -webkit-font-smoothing: antialiased; }
+    .wrap { width: min(100% - 2.5rem, 1040px); }
+    @media (min-width: 900px) { .wrap { width: min(100% - 4rem, 1040px); } }
+
+    nav .brand { font-size: 1.05rem; letter-spacing: .01em; }
+    nav ul a { display: inline-block; padding: .35rem .1rem; border-bottom: 2px solid transparent; }
+    nav ul a:hover { color: var(--ink); border-color: var(--gold); }
+    @media (max-width: 640px) {
+      nav .wrap { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: .1rem; }
+      nav ul { width: 100%; flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; gap: 1.1rem; scrollbar-width: none; }
+      nav ul::-webkit-scrollbar { display: none; }
+    }
+
+    .hero { padding: 4.5rem 0 5rem; }
+    .hero .wrap { gap: 2.5rem; }
+    .avatar { width: 190px; height: 190px; }
+    h1 { font-size: clamp(2.2rem, 6.5vw, 3.6rem); letter-spacing: -.01em; }
+    .hero .role {
+      max-width: none; margin-top: .75rem; color: var(--gold);
+      font-family: var(--serif); font-weight: 400; font-size: clamp(1.1rem, 3vw, 1.35rem);
+    }
+    @media (min-width: 760px) {
+      .hero { padding: 6rem 0 6.5rem; }
+      .hero .wrap { gap: 4rem; }
+      .avatar { width: 250px; height: 250px; }
+    }
+
+    section { padding: 4rem 0; border-top: 1px solid var(--line); }
+    main > section:first-child { border-top: 0; }
+    h2 { display: block; border: 0; padding: 0; margin-bottom: 1.5rem; font-size: 1.65rem; line-height: 1.2; }
+    h2::after { content: ""; display: block; width: 2.75rem; height: 3px; margin-top: .75rem; background: var(--gold); border-radius: 2px; }
+    @media (min-width: 860px) {
+      section { padding: 5rem 0; }
+      .split { display: grid; grid-template-columns: 220px minmax(0, 1fr); column-gap: 3rem; align-items: start; }
+      .split > h2 { grid-column: 1; grid-row: 1 / span 20; position: sticky; top: 6.5rem; margin-bottom: 0; }
+      .split > :not(h2) { grid-column: 2; }
+    }
+
+    .lead { max-width: 62ch; font-size: 1.05rem; }
+    .edu { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 1.4rem 1.6rem; }
+    .edu h3 { font-size: 1.25rem; }
+    .edu span { display: block; margin-top: .25rem; }
+    .exp { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+    .exp article { border-radius: var(--radius); padding: 1.5rem; border-top: 3px solid var(--gold); }
+    .interest div { border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: var(--radius); padding: 1.5rem; }
+    .thumb { border-radius: 14px; }
+
+    .contact { padding: 2.25rem 1.5rem; border-radius: 20px; border: 1px solid var(--line); }
+    .contact ul { gap: .6rem; }
+    .contact li { background: rgba(255, 255, 255, .75); border-radius: 12px; padding: .8rem 1rem; }
+    @media (min-width: 760px) {
+      .contact { padding: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 3rem; align-items: center; }
+      .contact h2 { grid-column: 1 / -1; margin-bottom: .5rem; }
+      .contact ul { margin-top: 0; }
+    }
+
+    footer { text-align: left; border-top: 1px solid var(--line); padding: 1.75rem 0 calc(1.75rem + env(safe-area-inset-bottom, 0px)); }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; align-items: center; padding-right: 4rem; }
+    footer a { color: var(--muted); text-decoration-color: var(--gold); text-underline-offset: 3px; }
+
+    /* Tema biru elegan + aksen emas */
+    :root {
+      --navy: #0B1F3F; --navy-2: #14305C; --navy-3: #1D4380;
+      --bg: #F4F7FB; --blush: #E3ECF7; --lavender: #D7E4F4; --sky: #CFE0F3; --mint: #E8F0F9;
+      --ink: #0E2240; --muted: #51617A;
+      --gold: #B8913A; --gold-soft: #D9B96A;
+      --line: rgba(184, 145, 58, .32);
+    }
+    ::selection { background: var(--gold-soft); color: var(--navy); }
+    .wrap > section:first-child { border-top: 0; }
+
+    nav { background: rgba(11, 31, 63, .92); border-bottom: 1px solid rgba(217, 185, 106, .4); }
+    nav .brand { color: var(--gold-soft); }
+    nav ul a { color: rgba(244, 247, 252, .78); }
+    nav ul a:hover { color: #fff; border-color: var(--gold-soft); }
+
+    .hero {
+      position: relative; overflow: hidden; isolation: isolate; color: #F4F7FC;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, var(--navy-3) 100%);
+      border-bottom: 2px solid var(--gold);
+    }
+    .hero .wrap { position: relative; z-index: 1; }
+    .hero h1 { color: #fff; }
+    .hero p { color: rgba(244, 247, 252, .8); }
+    .hero .role { color: var(--gold-soft); }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    .orb { position: absolute; border-radius: 50%; border: 1px solid rgba(217, 185, 106, .4); will-change: transform; }
+    .orb-a { width: 440px; height: 440px; right: -140px; top: -120px; background: radial-gradient(circle at 30% 30%, rgba(217, 185, 106, .22), transparent 65%); }
+    .orb-b { width: 260px; height: 260px; left: -90px; bottom: -80px; background: radial-gradient(circle at 60% 40%, rgba(120, 165, 230, .28), transparent 65%); }
+    .btn.gold { color: var(--navy); }
+    .btn.gold:hover { background: var(--gold-soft); }
+    .btn.line { color: #fff; background: transparent; border-color: var(--gold-soft); }
+    .btn.line:hover { background: rgba(255, 255, 255, .12); }
+
+    .intro { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, var(--navy-3) 100%); color: #fff; }
+    .intro-sub { color: var(--gold-soft); }
+    .intro-note { color: rgba(244, 247, 252, .7); }
+    .cam { background: rgba(255, 255, 255, .08); }
+
+    .chip.on, .music.on { color: var(--navy); }
+    dialog#lightbox::backdrop { background: rgba(11, 31, 63, .92); }
+
+    footer { background: var(--navy); color: rgba(244, 247, 252, .75); border-top: 2px solid var(--gold); }
+    footer a { color: var(--gold-soft); }
+
+    /* Pita parallax */
+    .band {
+      position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center;
+      min-height: 340px; display: grid; place-items: center;
+      border-block: 2px solid var(--gold);
+    }
+    .band img { position: absolute; left: 0; top: -20%; width: 100%; height: 140%; object-fit: cover; z-index: -2; will-change: transform; }
+    .band::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(11, 31, 63, .7), rgba(11, 31, 63, .85)); }
+    .band p { max-width: 24ch; padding: 3rem 1.5rem; font-family: var(--serif); font-size: clamp(1.5rem, 5vw, 2.5rem); line-height: 1.3; }
+
+    /* Efek interaksi pada elemen penting */
+    .btn, .chip, .exp article, .interest div, .edu, .contact li {
+      transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .exp article:hover, .interest div:hover, .edu:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(14, 34, 64, .14); }
+    .contact li:hover { background: #fff; border-color: var(--gold); }
+    .thumb img { transition: transform .5s ease; }
+    .thumb:hover img { transform: scale(1.05); }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+  </style>
+</head>
+<body class="intro-open">
+
+  <noscript><style>.intro { display: none; } body.intro-open { overflow: auto; }</style></noscript>
+  <div class="intro" id="intro">
+    <div class="intro-box">
+      <p class="intro-name">Randha Trianda Rahman</p>
+      <p class="intro-sub">Portofolio</p>
+      <button type="button" class="cam" id="enterBtn" aria-label="Masuk ke website portofolio">
+        <svg viewBox="0 0 120 96" aria-hidden="true">
+          <path class="cam-body" d="M38 14l5-8h34l5 8h22a10 10 0 0 1 10 10v50a10 10 0 0 1-10 10H16A10 10 0 0 1 6 74V24a10 10 0 0 1 10-10z"/>
+          <circle class="cam-lens" cx="60" cy="50" r="24"/>
+          <circle class="cam-glass" cx="60" cy="50" r="14"/>
+          <circle class="cam-shine" cx="55" cy="45" r="5"/>
+          <circle class="cam-dot" cx="97" cy="28" r="4"/>
+        </svg>
+      </button>
+      <p class="intro-cta">Ketuk kamera untuk masuk</p>
+      <p class="intro-note">Musik akan diputar saat Anda masuk.</p>
+    </div>
+  </div>
+
+
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="#atas">Randha T. Rahman</a>
+      <ul>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#pendidikan">Pendidikan</a></li>
+        <li><a href="#pengalaman">Pengalaman</a></li>
+        <li><a href="#minat">Minat</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="https://wa.me/6281234567890?text=Halo%20Randha%2C%20saya%20melihat%20portofolio%20Anda." target="_blank" rel="noopener">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="atas">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="orb orb-a" data-speed="0.25"></span>
+      <span class="orb orb-b" data-speed="0.14"></span>
+    </div>
+    <div class="wrap" data-speed="0.08">
+      <img class="avatar" src="foto-profil.jpg" alt="Foto Randha Trianda Rahman" width="600" height="800">
+      <div>
+        <h1>Randha Trianda Rahman</h1>
+        <p class="role">Marketing, Admin, dan Analyst</p>
+        <p>Lulusan Sistem Informasi dengan pengalaman di marketing, administrasi, dan analisis data, serta minat di fotografi dan desain grafis.</p>
+        <div class="btns">
+          <a class="btn gold" href="https://wa.me/6281234567890?text=Halo%20Randha%2C%20saya%20melihat%20portofolio%20Anda." target="_blank" rel="noopener">Hubungi saya</a>
+          <a class="btn line" href="#pengalaman">Lihat pengalaman</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="tentang" class="split">
+      <h2>Tentang saya</h2>
+      <p class="lead">Saya Randha Trianda Rahman, lulusan S1 Sistem Informasi STMIK Manado tahun 2020. Saya pernah bekerja di bidang marketing, admin, dan analyst, sehingga terbiasa mengolah data, menyusun laporan, dan berkomunikasi dengan berbagai pihak.</p>
+      <p class="lead">Di luar pekerjaan, saya tertarik pada fotografi dan desain grafis, dua bidang yang melatih kepekaan visual saya.</p>
+    </section>
+
+    <section id="pendidikan" class="split">
+      <h2>Pendidikan</h2>
+      <div class="edu">
+        <h3>S1 Sistem Informasi</h3>
+        <span>STMIK Manado, lulus 2020</span>
+      </div>
+    </section>
+
+    <section id="pengalaman" class="split">
+      <h2>Pengalaman</h2>
+      <div class="exp">
+        <article>
+          <h3>Marketing</h3>
+          <p>Berhubungan langsung dengan pelanggan dan mitra, serta bekerja dengan target penjualan.</p>
+        </article>
+        <article>
+          <h3>Admin</h3>
+          <p>Mengelola data, dokumen, dan pencatatan operasional agar pekerjaan tim berjalan rapi.</p>
+        </article>
+        <article>
+          <h3>Analyst</h3>
+          <p>Membaca data dan menyajikannya dalam laporan yang membantu pengambilan keputusan.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="minat" class="split">
+      <h2>Minat</h2>
+      <div class="interest">
+        <div>
+          <h3>Fotografi</h3>
+          <p>Menangkap momen dan detail lewat komposisi, cahaya, dan sudut pandang.</p>
+        </div>
+        <div>
+          <h3>Desain grafis</h3>
+          <p>Merancang tampilan visual yang bersih, mudah dipahami, dan enak dilihat.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="band" aria-label="Pembatas visual">
+    <img src="galeri/udara-masjid.jpg" alt="" data-band loading="lazy">
+    <p>Melihat lewat lensa, merancang lewat desain.</p>
+  </div>
+
+  <div class="wrap">
+    <section id="galeri">
+      <h2>Galeri</h2>
+      <p class="lead">Kumpulan karya desain grafis dan dokumentasi foto saya.</p>
+      <div class="chips" role="group" aria-label="Filter galeri">
+          <button type="button" class="chip on" data-f="Semua" aria-pressed="true">Semua</button>
+          <button type="button" class="chip" data-f="Desain grafis" aria-pressed="false">Desain grafis</button>
+          <button type="button" class="chip" data-f="Dokumentasi acara" aria-pressed="false">Dokumentasi acara</button>
+          <button type="button" class="chip" data-f="Potret" aria-pressed="false">Potret</button>
+          <button type="button" class="chip" data-f="Foto udara" aria-pressed="false">Foto udara</button>
+      </div>
+      <div class="gallery">
+        <figure data-cat="Desain grafis">
+          <button type="button" class="thumb" data-src="galeri/poster-ramadhan.jpg" data-cap="Poster ucapan Ramadhan" aria-label="Perbesar: Poster ucapan Ramadhan">
+            <img src="galeri/poster-ramadhan.jpg" alt="Poster ucapan Marhaban Ya Ramadhan bernuansa hijau dan emas dengan foto keluarga" width="848" height="1200" loading="lazy">
+          </button>
+          <figcaption>Poster ucapan Ramadhan</figcaption>
+        </figure>
+        <figure data-cat="Desain grafis">
+          <button type="button" class="thumb" data-src="galeri/poster-pelantikan.jpg" data-cap="Poster ucapan selamat pelantikan" aria-label="Perbesar: Poster ucapan selamat pelantikan">
+            <img src="galeri/poster-pelantikan.jpg" alt="Poster ucapan selamat dan sukses atas pelantikan, latar hijau muda" width="675" height="1200" loading="lazy">
+          </button>
+          <figcaption>Poster ucapan selamat pelantikan</figcaption>
+        </figure>
+        <figure data-cat="Desain grafis">
+          <button type="button" class="thumb" data-src="galeri/desain-stiker.jpg" data-cap="Desain stiker 10x15" aria-label="Perbesar: Desain stiker 10x15">
+            <img src="galeri/desain-stiker.jpg" alt="Desain stiker bergaya surat suara dengan latar hijau" width="1200" height="800" loading="lazy">
+          </button>
+          <figcaption>Desain stiker 10x15</figcaption>
+        </figure>
+        <figure data-cat="Dokumentasi acara">
+          <button type="button" class="thumb" data-src="galeri/pelantikan-1.jpg" data-cap="Dokumentasi acara pelantikan" aria-label="Perbesar: Dokumentasi acara pelantikan">
+            <img src="galeri/pelantikan-1.jpg" alt="Potret close-up peserta pelantikan berseragam putih dengan peci hitam" width="675" height="1200" loading="lazy">
+          </button>
+          <figcaption>Dokumentasi acara pelantikan</figcaption>
+        </figure>
+        <figure data-cat="Dokumentasi acara">
+          <button type="button" class="thumb" data-src="galeri/pelantikan-2.jpg" data-cap="Dokumentasi acara pelantikan" aria-label="Perbesar: Dokumentasi acara pelantikan">
+            <img src="galeri/pelantikan-2.jpg" alt="Arak-arakan pelantikan dengan payung kuning dan gapura janur di belakangnya" width="1200" height="675" loading="lazy">
+          </button>
+          <figcaption>Dokumentasi acara pelantikan</figcaption>
+        </figure>
+        <figure data-cat="Dokumentasi acara">
+          <button type="button" class="thumb" data-src="galeri/kegiatan-1.jpg" data-cap="Kegiatan bersama warga" aria-label="Perbesar: Kegiatan bersama warga">
+            <img src="galeri/kegiatan-1.jpg" alt="Dua orang berpelukan hangat di tengah kerumunan warga" width="1200" height="675" loading="lazy">
+          </button>
+          <figcaption>Kegiatan bersama warga</figcaption>
+        </figure>
+        <figure data-cat="Dokumentasi acara">
+          <button type="button" class="thumb" data-src="galeri/kegiatan-2.jpg" data-cap="Kegiatan bersama warga" aria-label="Perbesar: Kegiatan bersama warga">
+            <img src="galeri/kegiatan-2.jpg" alt="Dua orang berjabat tangan sambil tersenyum di antara warga" width="1200" height="675" loading="lazy">
+          </button>
+          <figcaption>Kegiatan bersama warga</figcaption>
+        </figure>
+        <figure data-cat="Dokumentasi acara">
+          <button type="button" class="thumb" data-src="galeri/kegiatan-3.jpg" data-cap="Kegiatan bersama warga" aria-label="Perbesar: Kegiatan bersama warga">
+            <img src="galeri/kegiatan-3.jpg" alt="Foto bersama warga di pantai, beberapa orang mengacungkan jempol" width="675" height="1200" loading="lazy">
+          </button>
+          <figcaption>Kegiatan bersama warga</figcaption>
+        </figure>
+        <figure data-cat="Dokumentasi acara">
+          <button type="button" class="thumb" data-src="galeri/kegiatan-4.jpg" data-cap="Kegiatan bersama warga di pantai" aria-label="Perbesar: Kegiatan bersama warga di pantai">
+            <img src="galeri/kegiatan-4.jpg" alt="Foto ramai warga berkumpul di pantai dengan laut di latar belakang" width="1200" height="675" loading="lazy">
+          </button>
+          <figcaption>Kegiatan bersama warga di pantai</figcaption>
+        </figure>
+        <figure data-cat="Dokumentasi acara">
+          <button type="button" class="thumb" data-src="galeri/pernikahan-1.jpg" data-cap="Dokumentasi pesta pernikahan" aria-label="Perbesar: Dokumentasi pesta pernikahan">
+            <img src="galeri/pernikahan-1.jpg" alt="Foto bersama tamu di pelaminan dengan dekorasi bunga putih dan merah muda" width="1200" height="675" loading="lazy">
+          </button>
+          <figcaption>Dokumentasi pesta pernikahan</figcaption>
+        </figure>
+        <figure data-cat="Dokumentasi acara">
+          <button type="button" class="thumb" data-src="galeri/pernikahan-2.jpg" data-cap="Dokumentasi pesta pernikahan" aria-label="Perbesar: Dokumentasi pesta pernikahan">
+            <img src="galeri/pernikahan-2.jpg" alt="Foto bersama tamu dan pengantin di depan dekorasi bunga putih dan hijau" width="1200" height="675" loading="lazy">
+          </button>
+          <figcaption>Dokumentasi pesta pernikahan</figcaption>
+        </figure>
+        <figure data-cat="Potret">
+          <button type="button" class="thumb" data-src="galeri/potret-1.jpg" data-cap="Sesi potret" aria-label="Perbesar: Sesi potret">
+            <img src="galeri/potret-1.jpg" alt="Potret perempuan bermahkota dan berselempang hitam-emas di depan dinding putih" width="900" height="1200" loading="lazy">
+          </button>
+          <figcaption>Sesi potret</figcaption>
+        </figure>
+        <figure data-cat="Potret">
+          <button type="button" class="thumb" data-src="galeri/potret-2.jpg" data-cap="Sesi potret" aria-label="Perbesar: Sesi potret">
+            <img src="galeri/potret-2.jpg" alt="Potret tiga perempat dengan mahkota dan kebaya hitam bermotif" width="900" height="1200" loading="lazy">
+          </button>
+          <figcaption>Sesi potret</figcaption>
+        </figure>
+        <figure data-cat="Potret">
+          <button type="button" class="thumb" data-src="galeri/potret-3.jpg" data-cap="Sesi potret" aria-label="Perbesar: Sesi potret">
+            <img src="galeri/potret-3.jpg" alt="Potret berdiri dengan tangan di depan, mengenakan mahkota dan selempang" width="900" height="1200" loading="lazy">
+          </button>
+          <figcaption>Sesi potret</figcaption>
+        </figure>
+        <figure data-cat="Foto udara">
+          <button type="button" class="thumb" data-src="galeri/udara-permukiman.jpg" data-cap="Foto udara kawasan permukiman" aria-label="Perbesar: Foto udara kawasan permukiman">
+            <img src="galeri/udara-permukiman.jpg" alt="Foto drone jalan raya dan permukiman dengan pegunungan di kejauhan" width="675" height="1200" loading="lazy">
+          </button>
+          <figcaption>Foto udara kawasan permukiman</figcaption>
+        </figure>
+        <figure data-cat="Foto udara">
+          <button type="button" class="thumb" data-src="galeri/udara-masjid.jpg" data-cap="Foto udara masjid" aria-label="Perbesar: Foto udara masjid">
+            <img src="galeri/udara-masjid.jpg" alt="Foto drone masjid hijau berkubah dengan atap biru dan pegunungan di latar" width="1200" height="900" loading="lazy">
+          </button>
+          <figcaption>Foto udara masjid</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <div class="contact">
+        <h2>Kontak</h2>
+        <p>Tertarik berdiskusi atau bekerja sama? Hubungi saya lewat:</p>
+        <ul>
+          <li>Email: <a href="mailto:emailanda@example.com">emailanda@example.com</a></li>
+          <li>WhatsApp: <a href="https://wa.me/6281234567890?text=Halo%20Randha%2C%20saya%20melihat%20portofolio%20Anda." target="_blank" rel="noopener">0812-3456-7890</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/username">linkedin.com/in/username</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="wrap"><span>&copy; 2026 Randha Trianda Rahman</span><a href="#atas">Kembali ke atas</a></div>
+  </footer>
+
+  <dialog id="lightbox" aria-label="Pratinjau gambar">
+    <div class="lb">
+      <button type="button" class="lb-close" aria-label="Tutup">&times;</button>
+      <img alt="">
+      <p></p>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      var chips = document.querySelectorAll('.chip');
+      var figs = document.querySelectorAll('.gallery figure');
+      chips.forEach(function (c) {
+        c.addEventListener('click', function () {
+          var f = c.getAttribute('data-f');
+          chips.forEach(function (x) {
+            var on = x === c;
+            x.classList.toggle('on', on);
+            x.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+          figs.forEach(function (fig) {
+            fig.hidden = !(f === 'Semua' || fig.getAttribute('data-cat') === f);
+          });
+        });
+      });
+
+      var dlg = document.getElementById('lightbox');
+      var img = dlg.querySelector('img');
+      var cap = dlg.querySelector('p');
+      document.querySelectorAll('.thumb').forEach(function (t) {
+        t.addEventListener('click', function () {
+          img.src = t.getAttribute('data-src');
+          img.alt = t.querySelector('img').alt;
+          cap.textContent = t.getAttribute('data-cap');
+          dlg.showModal();
+        });
+      });
+      dlg.querySelector('.lb-close').addEventListener('click', function () { dlg.close(); });
+      dlg.addEventListener('click', function (e) {
+        if (e.target === dlg || e.target.classList.contains('lb')) dlg.close();
+      });
+    })();
+  </script>
+
+  <div class="music-wrap">
+    <span class="music-hint" id="musicHint" role="status" hidden>Ketuk di mana saja untuk menyalakan musik</span>
+    <button type="button" class="music" id="musicBtn" aria-label="Putar musik" aria-pressed="false">
+      <svg id="icoPlay" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10 6-10 6z"/></svg>
+      <svg id="icoPause" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+    </button>
+  </div>
+  <div class="yt-off" aria-hidden="true"><div id="ytPlayer"></div></div>
+
+  <script>
+    (function () {
+      var VIDEO_ID = 'wkCUoUsbg3o';
+      var START = 116; // menit 1 detik 56
+
+      var intro = document.getElementById('intro');
+      var enterBtn = document.getElementById('enterBtn');
+      var btn = document.getElementById('musicBtn');
+      var hint = document.getElementById('musicHint');
+      var icoPlay = document.getElementById('icoPlay');
+      var icoPause = document.getElementById('icoPause');
+      var player = null, ready = false, entered = false, userPaused = false, retryBound = false;
+      var evs = ['pointerdown', 'keydown', 'touchstart'];
+
+      function setUI(playing) {
+        btn.classList.toggle('on', playing);
+        btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+        btn.setAttribute('aria-label', playing ? 'Jeda musik' : 'Putar musik');
+        icoPlay.hidden = playing;
+        icoPause.hidden = !playing;
+      }
+
+      function playWithSound() {
+        player.unMute();
+        player.setVolume(100);
+        player.playVideo();
+      }
+
+      // Cadangan: bila browser menahan suara, putar saat sentuhan berikutnya
+      function onRetry(e) {
+        if (e.target.closest && e.target.closest('#musicBtn')) return;
+        unbindRetry();
+        hint.hidden = true;
+        if (ready && !userPaused) playWithSound();
+      }
+      function bindRetry() {
+        if (retryBound) return;
+        retryBound = true;
+        evs.forEach(function (n) { document.addEventListener(n, onRetry, true); });
+      }
+      function unbindRetry() {
+        retryBound = false;
+        evs.forEach(function (n) { document.removeEventListener(n, onRetry, true); });
+      }
+
+      function startMusic() {
+        playWithSound();
+        setTimeout(function () {
+          var st = player.getPlayerState();
+          if (st !== 1 && st !== 3 && !userPaused) { hint.hidden = false; bindRetry(); }
+        }, 1500);
+      }
+
+      function enter() {
+        if (entered) return;
+        entered = true;
+        intro.classList.add('go');
+        document.body.classList.remove('intro-open');
+        setTimeout(function () {
+          intro.hidden = true;
+          var top = document.getElementById('atas');
+          if (top) { top.setAttribute('tabindex', '-1'); top.focus({ preventScroll: true }); }
+        }, 700);
+        if (ready) startMusic();
+      }
+      enterBtn.addEventListener('click', enter);
+      enterBtn.focus({ preventScroll: true });
+
+      btn.addEventListener('click', function () {
+        if (!ready) return;
+        hint.hidden = true;
+        unbindRetry();
+        if (player.getPlayerState() === 1) {
+          userPaused = true; player.pauseVideo();
+        } else {
+          userPaused = false; playWithSound();
+        }
+      });
+
+      window.onYouTubeIframeAPIReady = function () {
+        var vars = { start: START, controls: 0, playsinline: 1, rel: 0, disablekb: 1, fs: 0, modestbranding: 1 };
+        if (/^https?:/.test(location.protocol)) vars.origin = location.origin;
+        player = new YT.Player('ytPlayer', {
+          width: 200, height: 200, videoId: VIDEO_ID, playerVars: vars,
+          events: {
+            onReady: function () {
+              ready = true;
+              if (entered) startMusic();
+            },
+            onStateChange: function (e) {
+              if (e.data === 0) {     // video habis: ulang dari menit 1:56
+                player.seekTo(START, true);
+                player.playVideo();
+              }
+              if (e.data === 1) { hint.hidden = true; unbindRetry(); }
+              setUI(e.data === 1);
+            },
+            onError: function () {
+              unbindRetry();
+              hint.textContent = 'Musik tidak dapat diputar (video mungkin tidak mengizinkan penyematan).';
+              hint.hidden = false;
+              btn.hidden = true;
+            }
+          }
+        });
+      };
+
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(tag);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var els = [].slice.call(document.querySelectorAll('[data-speed],[data-band]'));
+      var ticking = false;
+      function update() {
+        var y = window.pageYOffset, vh = window.innerHeight;
+        els.forEach(function (el) {
+          if (el.hasAttribute('data-band')) {
+            var box = el.parentNode.getBoundingClientRect();
+            if (box.bottom < 0 || box.top > vh) return;
+            var lim = box.height * 0.2;
+            var off = -(box.top + box.height / 2 - vh / 2) * 0.2;
+            off = Math.max(-lim, Math.min(lim, off));
+            el.style.transform = 'translate3d(0,' + off + 'px,0)';
+          } else if (y < vh * 1.5) {
+            el.style.transform = 'translate3d(0,' + (y * parseFloat(el.getAttribute('data-speed'))) + 'px,0)';
+          }
+        });
+        ticking = false;
+      }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    })();
+  </script>
+
+</body>
+</html>
